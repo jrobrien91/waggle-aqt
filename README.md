@@ -13,6 +13,12 @@ Therefore, to determine which port the instrument is plugged into, PySerial offe
 python -m serial.tools.list_ports
 ```
 
+The default serial settings for the RS-485 interface are:
+1. Baud Rate = 115200
+1. Data Bits = 8
+1. Parity = None
+1. Stop Bits = 1
+
 ## Testing 
 
 Similar to the [Vaisala WXT536 plugin](https://portal.sagecontinuum.org/apps/app/jrobrien/waggle-wxt536) a docker container will be setup via Makefile 

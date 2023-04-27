@@ -1,5 +1,5 @@
 WORKDIR=$(shell pwd)
-IMAGE?=plugin-wxt530
+IMAGE?=plugin-aqt
 
 default:
 	@echo ${WORKDIR}
