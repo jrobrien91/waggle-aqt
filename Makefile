@@ -15,10 +15,10 @@ rm:
 
 deploy:
 	docker run -d --rm --name ${IMAGE} \
-	       --device=/dev/ttyUSB0 \
+	       --device=/dev/ttyUSB3 \
 	       --entrypoint '/bin/sh' ${IMAGE} -c '/bin/sleep infinity'
 run:
-	docker run --device=/dev/ttyUSB0 ${IMAGE}
+	docker run --device=/dev/ttyUSB3 ${IMAGE}
 
 interactive:
 	docker exec -it ${IMAGE} bash
