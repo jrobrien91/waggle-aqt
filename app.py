@@ -8,7 +8,6 @@ from waggle.plugin import Plugin, get_timestamp
 def parse_values(sample, **kwargs):
     # Note: The AQT ASCII data contains which specific variables are in the string
     # as the second to last comma separated value within the line
-    print(sample)
     if sample.startswith(b'20'):
         data = parse.search("{ti}," +
                             "{.1F}," +
@@ -60,7 +59,6 @@ def start_publishing(args, plugin, dev, **kwargs):
     """
     # Note: AQT ASCII interface configuration described in manual
     line = dev.readline()
-    print('hey made it to start_publishing')
     # Note: AQT has 1 min data output, need to check if bytes are returned
     if len(line) > 0: 
         # Define the timestamp
@@ -81,8 +79,7 @@ def start_publishing(args, plugin, dev, **kwargs):
                         continue
                     # Update the log
                     if kwargs.get('debug', 'False'):
-                        print(timestamp, name, value, kwargs['units'][name], type(value))
-                    print('node', timestamp, name, value, kwargs['units'][name], type(value))
+                        print('node', timestamp, name, value, kwargs['units'][name], type(value))
                     logging.info("node publishing %s %s units %s type %s", name, value, kwargs['units'][name], str(type(value)))
                     plugin.publish(name,
                                    value=value,
@@ -104,8 +101,7 @@ def start_publishing(args, plugin, dev, **kwargs):
                         continue
                     # Update the log
                     if kwargs.get('debug', 'False'):
-                        print(timestamp, name, value, kwargs['units'][name], type(value))
-                    print('beehive', timestamp, name, value, kwargs['units'][name], type(value))
+                        print('beehive', timestamp, name, value, kwargs['units'][name], type(value))
                     logging.info("beehive publishing %s %s units %s type %s", name, value, kwargs['units'][name], str(type(value)))
                     plugin.publish(name,
                                    value=value,
@@ -119,7 +115,6 @@ def start_publishing(args, plugin, dev, **kwargs):
                                   )
 
 def main(args):
-    print('in main')
     publish_names = {"aqt.env.temp" : "T",
                      "aqt.env.pressure" : "P",
                      "aqt.env.humidity" : "H",
@@ -168,8 +163,6 @@ def main(args):
                    "aqt.house.uptime" : "Time in seconds since instrument startup"
                   }
 
-    print(args.device)
-    print(args.baud_rate)
     with Plugin() as plugin, serial.Serial(args.device, baudrate=args.baud_rate, timeout=1.0) as dev:
         while True:
             try:
