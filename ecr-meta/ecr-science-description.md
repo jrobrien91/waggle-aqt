@@ -30,3 +30,19 @@ make deploy
 ### 3) Test the plugin
 ```bash
 make run
+```
+
+# Access the Data
+```py
+import sage_data_client
+
+df = sage_data_client.query(start="2023-05-05T03:00:00Z",
+                            end="2023-04-05T04:00:00Z", 
+                            filter={
+                                "plugin": "jrobrien/waggle-wxt536",
+                                "vsn": "W039",
+                                "sensor": "vaisala-aqt530"
+                            }
+)
+
+```
