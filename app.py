@@ -209,7 +209,7 @@ if __name__ == '__main__':
                              "(negative values disable node publishing)"
                         )
     parser.add_argument("--beehive-publish-interval",
-                        default=0.0,
+                        default=1.0,
                         dest='beehive_interval',
                         type=float,
                         help="interval to publish data to beehive " +
